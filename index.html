@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterVia Design - لوحة الاستراتيجية الرقمية المطورة 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: '#1B2D3C',  /* الكحلي الفاخر من الشعار */
+                        brandTeal: '#117371',  /* التيل البترولي من الشعار */
+                        brandGold: '#C5A880',  /* الذهبي المكمل من شعار الفخامة */
+                        brandLightBg: '#F3F6F6',
+                        brandDark: '#0E171F'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #F8FAFA;
+            color: #1B2D3C;
+        }
+        .active-tab {
+            background-color: #117371;
+            color: #FFFFFF !important;
+        }
+        .brand-gradient-text {
+            background: linear-gradient(135deg, #1B2D3C 0%, #117371 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(17, 115, 113, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <header class="bg-brandNavy text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <!-- Logo Section -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center p-1.5 shadow-md">
+                    <svg viewBox="0 0 100 100" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 'i' character -->
+                        <path d="M 33 40 L 33 67 M 27 67 L 39 67 M 29 40 L 37 40" stroke="#1B2D3C" stroke-width="6" stroke-linecap="round" />
+                        <!-- Elegant 'i' dot -->
+                        <path d="M 39 37 C 39 31, 31 34, 34 39" stroke="#117371" stroke-width="8" stroke-linecap="round" fill="none" />
+                        <!-- Connecting diagonal to V -->
+                        <line x1="38" y1="38" x2="53" y2="59" stroke="#117371" stroke-width="3" stroke-linecap="round" />
+                        <!-- 'V' character -->
+                        <path d="M 59 39 L 55 59 L 72 39 M 51 59 L 59 59 M 66 39 L 78 39" stroke="#1B2D3C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-wide">InterVia <span class="text-brandTeal">Design</span></h1>
+                    <p class="text-[9px] text-brandGold font-bold tracking-wider uppercase">استراتيجية تسويق الفلل والمشاريع الفاخرة</p>
+                </div>
+            </div>
+
+            <!-- Quick Stats Banner -->
+            <div class="flex items-center gap-3 text-xs bg-brandDark/40 px-4 py-2 rounded-lg border border-brandTeal/20">
+                <div class="text-center px-2 border-l border-brandTeal/30">
+                    <span class="block font-extrabold text-brandGold">510</span>
+                    <span class="text-[10px] text-gray-400">متابع حقيقي</span>
+                </div>
+                <div class="text-center px-2 border-l border-brandTeal/30">
+                    <span class="block font-extrabold text-brandGold">142</span>
+                    <span class="text-[10px] text-gray-400">منشور نوعي</span>
+                </div>
+                <div class="text-center px-2">
+                    <span class="block font-bold text-green-400">نشط</span>
+                    <span class="text-[10px] text-gray-400">حالة الحساب</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Hub (Tabs) -->
+    <div class="bg-white border-b border-gray-200 py-2 sticky top-[68px] z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-none">
+            <button onclick="switchTab('audit')" id="tab-audit-btn" class="active-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-gray-600 hover:text-brandTeal transition flex items-center gap-2">
+                <i class="fa-solid fa-chart-line"></i> تحليل الوضع الحالي
+            </button>
+            <button onclick="switchTab('reels')" id="tab-reels-btn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-gray-600 hover:text-brandTeal transition flex items-center gap-2">
+                <i class="fa-solid fa-play"></i> ثورة الـ Reels والفيديو
+            </button>
+            <button onclick="switchTab('bio')" id="tab-bio-btn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-gray-600 hover:text-brandTeal transition flex items-center gap-2">
+                <i class="fa-solid fa-address-card"></i> تطوير البايو والتعليم
+            </button>
+            <button onclick="switchTab('ads')" id="tab-ads-btn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-gray-600 hover:text-brandTeal transition flex items-center gap-2">
+                <i class="fa-solid fa-bullseye"></i> استهداف إعلانات قطر
+            </button>
+            <button onclick="switchTab('calendar')" id="tab-calendar-btn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-gray-600 hover:text-brandTeal transition flex items-center gap-2">
+                <i class="fa-solid fa-calendar-alt"></i> جدول النشر التفاعلي
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl w-full mx-auto px-4 py-6 flex-grow">
+
+        <!-- SECTION 1: AUDIT & DIAGNOSIS -->
+        <div id="tab-audit" class="tab-content block space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                
+                <!-- Diagnosis Overview -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4 lg:col-span-7">
+                    <span class="bg-brandTeal/10 text-brandTeal px-3 py-1 rounded-full text-xs font-bold">التشخيص الفني للحساب</span>
+                    <h2 class="text-2xl font-bold text-brandNavy">لماذا لا يتناسب التفاعل مع جودة التصاميم الاستثنائية لـ InterVia؟</h2>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        من خلال تحليل شبكة الحساب (Grid) والمنشورات البالغ عددها <strong>142 منشوراً</strong>، يتضح أن الجمالية البصرية والهوية اللونية ممتازة والـ Renders عالية الدقة. ولكن، يكمن الخلل الرئيسي في الاعتماد المفرط على الصور الثابتة وإهمال الجانب الإنساني التفاعلي.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-red-50 rounded-xl border-r-4 border-red-500">
+                            <h4 class="font-bold text-red-800 text-sm mb-1">الاعتماد المفرط على الصور الثابتة</h4>
+                            <p class="text-xs text-red-700 leading-relaxed">البوسترات الرسمية المؤطرة تخفض وصول خوارزمية إنستقرام الحالية.</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 rounded-xl border-r-4 border-amber-500">
+                            <h4 class="font-bold text-amber-800 text-sm mb-1">غياب "الجانب البشري" والواقعية</h4>
+                            <p class="text-xs text-amber-700 leading-relaxed">العملاء بحاجة لرؤية الحركة، كواليس العمل، والمهندسين في الميدان لبناء ثقة حقيقية.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exact Brand Palette Displayed Dynamically -->
+                    <div class="p-5 bg-brandLightBg rounded-xl space-y-3 border border-brandTeal/5">
+                        <h4 class="font-bold text-brandNavy text-xs flex items-center gap-2">
+                            <i class="fa-solid fa-palette text-brandTeal"></i> الهوية اللونية المعتمدة بالشعار:
+                        </h4>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="flex items-center gap-2 p-1.5 bg-white rounded-lg shadow-sm">
+                                <span class="w-5 h-5 rounded bg-[#1B2D3C] shrink-0"></span>
+                                <div class="text-[9px]">
+                                    <span class="block font-bold text-brandNavy">كحلي الشعار</span>
+                                    <span class="text-gray-500">#1B2D3C</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 p-1.5 bg-white rounded-lg shadow-sm">
+                                <span class="w-5 h-5 rounded bg-[#117371] shrink-0"></span>
+                                <div class="text-[9px]">
+                                    <span class="block font-bold text-brandNavy">تيل الشعار</span>
+                                    <span class="text-gray-500">#117371</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 p-1.5 bg-white rounded-lg shadow-sm">
+                                <span class="w-5 h-5 rounded bg-[#C5A880] shrink-0"></span>
+                                <div class="text-[9px]">
+                                    <span class="block font-bold text-brandNavy">الذهبي المكمل</span>
+                                    <span class="text-gray-500">#C5A880</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Brand Visual Card with MANUAL IMAGE PLACEHOLDER -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="p-6 rounded-2xl bg-white shadow-xl border border-gray-100 text-center space-y-4">
+                        <h3 class="text-base font-bold text-brandNavy"><i class="fa-solid fa-image text-brandTeal ml-1"></i> معاينة الشعار / صورة الحساب</h3>
+                        
+                        <!-- ==================== مساحة وضع الصورة يدوياً ==================== -->
+                        <div class="w-full h-56 rounded-xl bg-gray-100 border-2 border-dashed border-brandTeal/30 flex flex-col items-center justify-center overflow-hidden relative group">
+                            <!-- يمكنك إزالة وسوم الـ SVG والـ Paragraph بالأسفل وتفعيل وسم img التالي برابط صورتك الحقيقي -->
+                            <!-- <img src="ضع_رابط_الصورة_هنا.jpg" alt="InterVia Design Logo" class="w-full h-full object-cover"> -->
+                            
+                            <div class="text-center p-4">
+                                <i class="fa-solid fa-cloud-arrow-up text-3xl text-brandTeal/50 mb-2"></i>
+                                <p class="text-xs text-brandNavy font-bold">مساحة مخصصة لصورتك</p>
+                                <p class="text-[10px] text-gray-400 mt-1">لإضافة صورتك الخاصة افتح الكود يدويًا واستبدل السطر رقم 144 برابط ملفك أو صورتك.</p>
+                            </div>
+                        </div>
+                        <!-- ============================================================= -->
+
+                        <div class="space-y-2 text-right text-xs text-gray-600 bg-brandLightBg p-4 rounded-xl border border-brandTeal/5">
+                            <p><strong class="text-brandNavy">الكحلي الداكن:</strong> يعكس المهنية الهندسية، الموثوقية اللازمة لبناء الأبنية والفلل.</p>
+                            <p><strong class="text-brandTeal">التيل البترولي:</strong> يرمز إلى الابتكار، التناغم الجمالي في التصميم المعاصر.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: REELS REVOLUTION -->
+        <div id="tab-reels" class="tab-content hidden space-y-6">
+            <div class="max-w-3xl">
+                <span class="bg-brandTeal/10 text-brandTeal px-3 py-1 rounded-full text-xs font-bold">1. محرك النمو الأساسي</span>
+                <h3 class="text-2xl font-bold text-brandNavy mt-2">ثورة الـ Reels: كيف نصنع انتشاراً عالي الجودة للفلل الفاخرة؟</h3>
+                <p class="text-sm text-gray-500 mt-1">العميل في قطر يبحث عن برهان الثقة والواقعية قبل التعاقد. إليك أساليب تحويل مشاريعكم إلى مقاطع فيديو جذابة:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Method 1 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-brandTeal/10 text-brandTeal flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h4 class="font-bold text-brandNavy text-base mb-2">فيديوهات "قبل وبعد" (Before & After)</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        أظهر المساحة الفارغة في الموقع الإنشائي أو المخطط الهندسي، ثم انقل المشاهد بحركة كاميرا ذكية وسلسة للغاية ليرى التصميم ثلاثي الأبعاد (3D Renders) النهائي.
+                    </p>
+                    <span class="text-[10px] font-bold text-brandGold bg-brandLightBg px-2 py-1 rounded">مثالي لـ: مشاريع الفلل السكنية</span>
+                </div>
+
+                <!-- Method 2 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-brandNavy/10 text-brandNavy flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                    </div>
+                    <h4 class="font-bold text-brandNavy text-base mb-2">جولات افتراضية (3D Walkthrough)</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        استبدل الصور الثابتة للغرف بمقطع فيديو قصير (15-30 ثانية) يتحرك بنعومة فائقة داخل المجلس أو المطبخ أو الحديقة ليعيش العميل تجربة التواجد الفعلي في المكان مع صوت هادئ ومناسب.
+                    </p>
+                    <span class="text-[10px] font-bold text-brandGold bg-brandLightBg px-2 py-1 rounded">مثالي لـ: المكاتب والمحلات والمقاهي</span>
+                </div>
+
+                <!-- Method 3 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-brandGold/20 text-brandTeal flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-person-digging"></i>
+                    </div>
+                    <h4 class="font-bold text-brandNavy text-base mb-2">فيديوهات مواقع العمل (Site Visits)</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-4">
+                        استغلوا ميزة الإشراف في مواقع العمل (لوسيل، الدوحة). صوّروا المهندسين وهم يطابقون التشطيبات والخرسانات، فظهور الحركة يزيل التردد ويبني مصداقية حديدية.
+                    </p>
+                    <span class="text-[10px] font-bold text-brandGold bg-brandLightBg px-2 py-1 rounded">مثالي لـ: الهايلايتس والـ Stories اليومية</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: BIO OPTIMIZATION & VALUE -->
+        <div id="tab-bio" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left: Bio & Highlights Layout -->
+                <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
+                    <div>
+                        <span class="bg-brandTeal/10 text-brandTeal px-3 py-1 rounded-full text-xs font-bold">2. تحسين واجهة الملف التجاري</span>
+                        <h3 class="text-xl font-bold text-brandNavy mt-2">تهيئة الـ Bio لتوضيح الميزة التنافسية لـ InterVia</h3>
+                    </div>
+
+                    <!-- Comparison Box -->
+                    <div class="space-y-4">
+                        <div class="p-4 bg-brandLightBg rounded-xl border border-brandTeal/10">
+                            <span class="text-[10px] font-bold text-brandGold uppercase tracking-wider block mb-2">الـ Bio المقترح لتعزيز الثقة الفورية:</span>
+                            <div class="text-sm font-semibold text-brandNavy space-y-1">
+                                <p>💎 InterVia Design | استشارات وتصاميم معمارية فاخرة</p>
+                                <p>📐 نحول أحلامكم المعمارية إلى واقع ملموس بدقة هندسية متكاملة</p>
+                                <p>📍 نخدم نخبة الملاك والمشاريع الاستثمارية في قطر</p>
+                                <p>👇 احجز جلستك الاستشارية المجانية لمشروعك الآن:</p>
+                                <p class="text-brandTeal text-xs font-bold mt-2">linktr.ee/intervia_deco</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-bold text-brandNavy text-sm mb-2"><i class="fa-solid fa-circle-nodes text-brandTeal ml-1"></i> إعادة هيكلة الـ Highlights الأربعة الأساسية:</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+                                <div class="p-3 bg-brandLightBg rounded-xl border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full gradient-bg mx-auto flex items-center justify-center text-brandNavy text-sm mb-2"><i class="fa-solid fa-map-location-dot text-brandTeal"></i></div>
+                                    <span class="font-bold">مشاريعنا بقطر</span>
+                                </div>
+                                <div class="p-3 bg-brandLightBg rounded-xl border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full gradient-bg mx-auto flex items-center justify-center text-brandNavy text-sm mb-2"><i class="fa-solid fa-comments text-brandTeal"></i></div>
+                                    <span class="font-bold">آراء عملائنا</span>
+                                </div>
+                                <div class="p-3 bg-brandLightBg rounded-xl border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full gradient-bg mx-auto flex items-center justify-center text-brandNavy text-sm mb-2"><i class="fa-solid fa-building-user text-brandTeal"></i></div>
+                                    <span class="font-bold">كواليس التنفيذ</span>
+                                </div>
+                                <div class="p-3 bg-brandLightBg rounded-xl border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full gradient-bg mx-auto flex items-center justify-center text-brandNavy text-sm mb-2"><i class="fa-solid fa-clipboard-list text-brandTeal"></i></div>
+                                    <span class="font-bold">خطوات العمل</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Educational Content Generator -->
+                <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <span class="bg-brandGold/10 text-brandGold px-3 py-1 rounded-full text-xs font-bold">المحتوى التعليمي (سلطة المعرفة)</span>
+                    <h3 class="text-lg font-bold text-brandNavy">أفكار نصائح تجعل المالك يتابعك طلباً للفائدة:</h3>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 bg-brandLightBg rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-brandTeal block">💡 إضاءة الفراغات</span>
+                            <p class="text-gray-600">"3 أخطاء تقع فيها عند توزيع الإضاءة المخفية في المجالس المفتوحة وتدمر فخامة الرخام."</p>
+                        </div>
+                        <div class="p-3 bg-brandLightBg rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-brandTeal block">🏡 الواجهات الخارجية</span>
+                            <p class="text-gray-600">"أفضل خامات تكسيات الواجهات الفاخرة التي تتحمل درجات الحرارة المرتفعة والرطوبة في الدوحة."</p>
+                        </div>
+                        <div class="p-3 bg-brandLightBg rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-brandTeal block">📐 مساحة المطابخ</span>
+                            <p class="text-gray-600">"كيف تستغل مثلث الحركة في المطبخ لتوفير مساحة عمل مريحة دون التضحية بالجمال البصري."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: ADS & INFLUENCERS -->
+        <div id="tab-ads" class="tab-content hidden space-y-6">
+            <div class="max-w-3xl">
+                <span class="bg-brandTeal/10 text-brandTeal px-3 py-1 rounded-full text-xs font-bold">3. استراتيجية الإعلانات المدفوعة والعلاقات</span>
+                <h3 class="text-2xl font-bold text-brandNavy mt-2">الوصول للنخبة وأصحاب الملاءة المالية العالية بقطر</h3>
+                <p class="text-sm text-gray-500 mt-1">المحتوى العضوي رائع للانتشار، لكن جلب صفقات الفلل الفاخرة الحقيقية يتطلب استهدافاً جغرافياً ذكياً لإعلانات Meta الممولة وشراكات مخصصة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Meta Ads Guide -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h4 class="font-bold text-brandNavy text-base flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye text-brandTeal"></i> حملات توليد بيانات العملاء المحتملين (Lead Generation)
+                    </h4>
+                    
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-start gap-2 p-2.5 bg-brandLightBg rounded-lg">
+                            <span class="font-bold text-brandTeal shrink-0">المادة الإعلانية:</span>
+                            <p class="text-gray-600">فيديو Reel عالي الفخامة يعرض تصميم فيلا مميزة مثل (Al Thumama Villa) أو (Qutaifan South Palace).</p>
+                        </div>
+                        <div class="flex items-start gap-2 p-2.5 bg-brandLightBg rounded-lg">
+                            <span class="font-bold text-brandTeal shrink-0">صيغة الـ CTA:</span>
+                            <p class="text-gray-600">"احصل على جلسة استشارة مجانية مع مهندسينا لتصميم فيلتك الخاصة. اترك بياناتك الآن وسنتواصل معك فوراً."</p>
+                        </div>
+                        <div class="flex items-start gap-2 p-2.5 bg-brandLightBg rounded-lg">
+                            <span class="font-bold text-brandTeal shrink-0">المناطق المستهدفة بدقة:</span>
+                            <p class="text-gray-600">اللؤلؤة، لوسيل، المشاف، الثمامة، قطيفان الجنوبية والشمالية.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Influencer Marketing Strategy -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h4 class="font-bold text-brandNavy text-base flex items-center gap-2">
+                        <i class="fa-solid fa-handshake text-brandTeal"></i> التسويق عبر المؤثرين (Influencer Marketing) بقطر
+                    </h4>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        الاستثمار الذكي ليس بالدفع المباشر لأي مؤثر، بل بالبحث عن مؤثرين في قطر يقومون ببناء بيوتهم حالياً أو يغطون قطاع العقارات واللايف ستايل الفاخر.
+                    </p>
+                    <div class="p-4 bg-brandTeal/5 border-r-4 border-brandTeal rounded-l-xl space-y-2 text-xs">
+                        <span class="font-bold text-brandNavy block">فكرة مقترح التعاون التبادلي:</span>
+                        <p class="text-gray-600 leading-relaxed">
+                            تقديم "جلسة استشارية هندسية مجانية متكاملة" أو "تصميم فراغ واحد كامل بالـ 3D" لمؤثر يبني مسكنه الجديد حالياً، مقابل قيامه بتغطية حية لزيارة مكتبكم وتوثيق دقة مهندسيكم بالستوريات والـ Reels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 5: NEW WEEKLY CALENDAR -->
+        <div id="tab-calendar" class="tab-content hidden space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-brandNavy flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-days text-brandTeal"></i> جدول النشر الأسبوعي المعتمد والمعدل
+                    </h3>
+                    <p class="text-sm text-gray-500">خطة نشر مركزة وواضحة تركز على الكفاءة والتفاعل العالي بدلاً من التشتت والكمية.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Sunday -->
+                <div class="bg-white rounded-2xl border border-brandTeal/20 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-extrabold text-brandTeal text-base">الأحد</span>
+                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">Reel جولة 3D</span>
+                        </div>
+                        <h4 class="font-bold text-brandNavy text-sm">مقطع تجول افتراضي لفيلا جديدة</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            فيديو Reel عالي الدقة والنعومة البصرية يتجول في فراغات فيلا مصممة من قبلنا لإعطاء انطباع بالانسيابية والفخامة مع صوت مناسب.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-brandLightBg text-[11px] font-bold text-brandNavy text-center border-t border-gray-100">
+                        الهدف: رفع معدل الانتشار والوصول العضوي
+                    </div>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="bg-white rounded-2xl border border-brandTeal/20 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-extrabold text-brandTeal text-base">الثلاثاء</span>
+                            <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">كاروسيل تعليمي</span>
+                        </div>
+                        <h4 class="font-bold text-brandNavy text-sm">منشور قيمة وفائدة مباشرة للمالك</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            تقديم إجابة حاسمة لنقاط يتردد فيها الملاك (مثال: "ما الفرق الجوهري بين التصميم الداخلي وتنسيق الأثاث لتفادي خسارة الميزانية؟").
+                        </p>
+                    </div>
+                    <div class="p-4 bg-brandLightBg text-[11px] font-bold text-brandNavy text-center border-t border-gray-100">
+                        الهدف: بناء سلطة معرفية وتحفيز الحفظ (Saves)
+                    </div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="bg-white rounded-2xl border border-brandTeal/20 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div class="p-5 space-y-3">
+                        <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                            <span class="font-extrabold text-brandTeal text-base">الخميس</span>
+                            <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">فيديو واقعي</span>
+                        </div>
+                        <h4 class="font-bold text-brandNavy text-sm">كواليس من مواقع العمل والمكتب</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            تصوير جولة لمهندسينا أثناء زيارة موقع تشطيب أو استلام أعمال هندسية لبث طاقة وحيوية إنسانية خلف الشعار.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-brandLightBg text-[11px] font-bold text-brandNavy text-center border-t border-gray-100">
+                        الهدف: كسر فجوة الثقة والتحويل للخاص والواتساب
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brandNavy text-white py-8 border-t-2 border-brandTeal mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
+            <span class="font-extrabold text-brandGold text-sm tracking-wide">InterVia Design © 2026</span>
+        </div>
+    </footer>
+
+    <!-- Simple Tab Switcher Logic -->
+    <script>
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+
+            const activeContent = document.getElementById('tab-' + tabId);
+            activeContent.classList.remove('hidden');
+            activeContent.classList.add('block');
+
+            const buttons = document.querySelectorAll('[id$="-btn"]');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-tab');
+            });
+            document.getElementById('tab-' + tabId + '-btn').classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
+```eof
